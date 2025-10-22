@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pedido - Nou Cims</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="favicon.svg" alt="Logo Nou Cims" class="logo">
+        </div>
+        
+        <h1>Formulario de Pedido</h1>
+        
+        <form id="orderForm" class="form">
+            <div class="form-group">
+                <label for="nombre">Nombre *</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Introduce tu nombre">
+            </div>
+
+            <div class="form-group">
+                <label for="apellido">Apellidos *</label>
+                <input type="text" id="apellido" name="apellidos" required placeholder="Introduce tus apellidos">
+            </div>
+
+            <div class="form-group">
+                <label for="primerPlato">Primer Plato *</label>
+                <select id="primerPlato" name="primerPlato" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="ensalada">Ensalada mixta</option>
+                    <option value="sopa">Sopa del día</option>
+                    <option value="pasta">Pasta con tomate</option>
+                    <option value="arroz">Arroz con verduras</option>
+                    <option value="lentejas">Lentejas guisadas</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="segundoPlato">Segundo Plato *</label>
+                <select id="segundoPlato" name="segundoPlato" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="pollo">Pollo asado</option>
+                    <option value="pescado">Pescado al horno</option>
+                    <option value="ternera">Ternera a la plancha</option>
+                    <option value="merluza">Merluza en salsa</option>
+                    <option value="hamburguesa">Hamburguesa casera</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dni">Subir DNI *</label>
+                <div class="file-input-wrapper">
+                    <input type="file" id="dni" name="dni" accept="image/*,.pdf" required>
+                    <span class="file-input-text">Seleccionar archivo...</span>
+                </div>
+                <small class="help-text">Formatos aceptados: JPG, PNG, PDF (máx. 5MB)</small>
+            </div>
+
+            <button type="submit" class="submit-btn">Enviar Pedido</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
