@@ -1,4 +1,6 @@
-// Manejo de la selección de menús
+// =====================
+// Selección de menús
+// =====================
 const menu1Radio = document.getElementById('menu1');
 const menu2Radio = document.getElementById('menu2');
 const menu1Card = document.getElementById('menu1Card');
@@ -31,7 +33,10 @@ menu2Card.addEventListener('click', function() {
     menu1Card.classList.remove('selected');
 });
 
-// Manejo del input de archivo
+
+// =====================
+// Input de archivo
+// =====================
 const fileInput = document.getElementById('dni');
 const fileInputText = document.querySelector('.file-input-text');
 
@@ -53,10 +58,36 @@ fileInputText.addEventListener('click', function() {
     fileInput.click();
 });
 
-// Validación del formulario
+
+// =====================
+// Envío a Google Sheets
+// =====================
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyy4aYFQkvsrrJeyO0F88wN4hR8xBBatybjBu3hf151FvxkrRXsRSyMhkolcOutrC96sA/exec';
+
+async function enviarAGoogleSheets(datos) {
+    // Usamos 'no-cors' para evitar problemas CORS desde GitHub Pages
+    // En 'no-cors' la respuesta es opaca; asumimos éxito tras el fetch.
+    try {
+        await fetch(WEB_APP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datos)
+        });
+        return true;
+    } catch (err) {
+        console.error('Error al enviar a Google Sheets:', err);
+        return false;
+    }
+}
+
+
+// =====================
+// Validación + submit
+// =====================
 const form = document.getElementById('orderForm');
 
-form.addEventListener('submit', function(e) {
+form.addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const nombre = document.getElementById('nombre').value.trim();
@@ -76,45 +107,47 @@ form.addEventListener('submit', function(e) {
         alert('El archivo es demasiado grande. El tamaño máximo es 5MB.');
         return;
     }
+
+    // Según tu requisito: si manda el form, 100% subió el DNI
+    if (!dniFile) {
+        alert('Por favor, adjunta el DNI antes de enviar.');
+        return;
+    }
     
-    // Si todo es válido
-    if (nombre && apellido && menuSeleccionado && dniFile) {
-        // Mostrar página de agradecimiento
+    // Si todo es válido, solo enviamos NOMBRE y APELLIDOS a Sheets.
+    const payload = { nombre, apellido };
+
+    const ok = await enviarAGoogleSheets(payload);
+
+    if (ok) {
+        // Mostrar página de agradecimiento y redirigir
         showThankYou();
-        
-        // Aquí puedes agregar la lógica para enviar los datos al servidor
-        // Los datos a enviar serían:
-        // - nombre, apellido, menuSeleccionado, alergias, dniFile
-        console.log({
-            nombre: nombre,
-            apellido: apellido,
-            menu: menuSeleccionado,
-            alergias: alergias || 'Ninguna',
-            dni: dniFile.name
-        });
+    } else {
+        alert('Hubo un error al enviar. Inténtalo de nuevo más tarde.');
     }
 });
 
-// Función para mostrar la página de agradecimiento
+
+// =====================
+// Pantalla de “Gracias”
+// =====================
 function showThankYou() {
     const formContainer = document.getElementById('formContainer');
     const thankYouPage = document.getElementById('thankYouPage');
     const thankYouTitle = document.getElementById('thankYouTitle');
     const nombre = document.getElementById('nombre').value.trim();
     
-    // Actualizar el título con el nombre del usuario
     thankYouTitle.textContent = `¡Muchas Gracias ${nombre}!`;
     
     formContainer.classList.add('hide');
     thankYouPage.classList.add('show');
     
-    // Redirigir después de 5 segundos
     setTimeout(function() {
         window.location.href = 'https://www.nouscims.com/ca/';
     }, 3000);
 }
 
-// Función para volver al formulario
+// Volver al formulario (si lo usas)
 function showForm() {
     const formContainer = document.getElementById('formContainer');
     const thankYouPage = document.getElementById('thankYouPage');
