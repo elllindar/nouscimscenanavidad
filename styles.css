@@ -500,8 +500,9 @@ a:hover,
     }
     
     .logo {
-        width: 60px;
-        height: 60px;
+        width: 220px;
+        height: auto;
+        padding: 12px 20px;
     }
 
     .menu-options {
@@ -518,8 +519,9 @@ a:hover,
     }
     
     .thank-you-logo {
-        width: 90px;
-        height: 90px;
+        width: 220px;
+        height: auto;
+        padding: 12px 20px;
     }
 }
 
