@@ -1,94 +1,95 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Pedido - Nou Cims</title>
-    <link href="favicon.svg" rel="icon" type="image/svg+xml">
+    <title>Formulari de Comanda - Nou Cims</title>
+    <link href="https://repartidor.elllindar.org/wp-content/uploads/2018/03/TitolRepartidor70pxblanc.png" rel="icon" type="image/svg+xml">
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 <div class="container">
-<!-- Página del formulario -->
+<!-- Pàgina del formulari -->
 <div class="form-container" id="formContainer">
     <div class="logo-container">
-        <img alt="Logo Restaurante" class="logo" src="favicon.svg">
+        <img alt="Logo Restaurant" class="logo" src="https://repartidor.elllindar.org/wp-content/uploads/2018/03/TitolRepartidor70pxblanc.png">
     </div>
 
-    <h1>Formulario Navidad</h1>
+    <h1>Formulari Sopar de Nadal</h1>
 
     <form class="form" id="orderForm" action="">
         <div class="form-group">
-            <label for="nombre">Nombre *</label>
-            <input id="nombre" type="text" placeholder="Introduce tu nombre" required>
+            <label for="nombre">Nom *</label>
+            <input id="nombre" type="text" placeholder="Escriu el teu nom" required>
         </div>
 
         <div class="form-group">
-            <label for="apellido">Apellidos *</label>
-            <input id="apellido" type="text" placeholder="Introduce tus apellidos" required>
+            <label for="apellido">Cognoms *</label>
+            <input id="apellido" type="text" placeholder="Escriu els teus cognoms" required>
         </div>
 
         <div class="menu-section">
-            <div class="menu-title">Selecciona tu Menú de Navidad *</div>
+            <div class="menu-title">Selecciona el teu Menú de Nadal *</div>
             <div class="menu-options">
+                <!-- MENÚ 1 -->
                 <label class="menu-card" id="menu1Card">
                     <input type="radio" name="menu" value="menu1" id="menu1" required>
                     <div class="menu-card-title">🎄 Menú 1</div>
                     <div class="menu-card-content">
-                        <strong>Entrantes:</strong>
+                        <strong>Primers:</strong>
                         <p>• Sopa de galets</p>
-                        <p>• Canelones de la abuela</p>
-                        <strong>Principal:</strong>
-                        <p>• Pavo asado con guarnición</p>
-                        <strong>Postre:</strong>
-                        <p>• Turrón y polvorones</p>
+                        <p>• Canelons tradicionals</p>
+                        <strong>Segons:</strong>
+                        <p>• Gall d’indi rostit amb guarnició</p>
+                        <strong>Postres:</strong>
+                        <p>• Torrons i neules</p>
                     </div>
                 </label>
 
+                <!-- MENÚ 2 -->
                 <label class="menu-card" id="menu2Card">
                     <input type="radio" name="menu" value="menu2" id="menu2" required>
                     <div class="menu-card-title">✨ Menú 2</div>
                     <div class="menu-card-content">
-                        <strong>Entrantes:</strong>
-                        <p>• Crema de marisco</p>
-                        <p>• Ensalada de langostinos</p>
-                        <strong>Principal:</strong>
-                        <p>• Cordero al horno con patatas</p>
-                        <strong>Postre:</strong>
-                        <p>• Roscón de Reyes</p>
+                        <strong>Primers:</strong>
+                        <p>• Crema de marisc</p>
+                        <p>• Amanida de llagostins</p>
+                        <strong>Segons:</strong>
+                        <p>• Xai al forn amb patates</p>
+                        <strong>Postres:</strong>
+                        <p>• Tortell de Reis</p>
                     </div>
                 </label>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="alergias">Alergias e Intolerancias</label>
-            <textarea id="alergias" name="alergias" placeholder="Indica aquí si tienes alguna alergia o intolerancia alimentaria (gluten, lactosa, frutos secos, marisco, etc.)"></textarea>
-            <small class="help-text">Este campo es opcional pero importante para tu seguridad</small>
+            <label for="alergias">Al·lèrgies i intoleràncies</label>
+            <textarea id="alergias" name="alergias" placeholder="Indica si tens alguna al·lèrgia o intolerància alimentària (gluten, lactosa, fruits secs, marisc, etc.)"></textarea>
+            <small class="help-text">Camp opcional però important per a la teva seguretat.</small>
         </div>
 
         <div class="form-group">
-            <label for="dni">Subir DNI *</label>
+            <label for="dni">Pujar DNI *</label>
             <div class="file-input-wrapper">
                 <input accept="image/*,.pdf" id="dni" type="file" required>
-                <span class="file-input-text">Seleccionar archivo...</span>
+                <span class="file-input-text">Selecciona un fitxer...</span>
             </div>
-            <small class="help-text">Formatos aceptados: JPG, PNG, PDF (máx. 5MB)</small>
+            <small class="help-text">Formats acceptats: JPG, PNG, PDF (màx. 5&nbsp;MB)</small>
         </div>
 
-        <button class="submit-btn" type="submit">Enviar Formulario</button>
+        <button class="submit-btn" type="submit">Envia el formulari</button>
     </form>
 </div>
 
-<!-- Página de agradecimiento -->
+<!-- Pàgina d’agraïment -->
 <div class="thank-you-page" id="thankYouPage">
-    <h1 class="thank-you-title" id="thankYouTitle">¡Muchas Gracias!</h1>
+    <h1 class="thank-you-title" id="thankYouTitle">Moltes gràcies!</h1>
     <p class="thank-you-message">
-        Tu formulario ha sido enviado correctamente.<br>
-        Nos pondremos en contacto contigo pronto.
+        El teu formulari s’ha enviat correctament.<br>
     </p>
     <div class="logo-container">
-        <img alt="Logo Nou Cims" class="thank-you-logo" src="favicon.svg">
+        <img alt="Logo Nou Cims" class="thank-you-logo" src="https://repartidor.elllindar.org/wp-content/uploads/2018/03/TitolRepartidor70pxblanc.png">
     </div>
 </div>
 </div>

@@ -44,11 +44,11 @@ fileInput.addEventListener('change', function(e) {
     const fileName = e.target.files[0]?.name;
     if (fileName) {
         fileInputText.textContent = fileName;
-        fileInputText.style.color = '#fe5d52';
+        fileInputText.style.color = '#ae895d'; // var(--accent)
         fileInputText.style.fontWeight = '600';
     } else {
         fileInputText.textContent = 'Seleccionar archivo...';
-        fileInputText.style.color = '#666';
+        fileInputText.style.color = '#6B7280'; // var(--muted)
         fileInputText.style.fontWeight = 'normal';
     }
 });
@@ -160,6 +160,6 @@ function showForm() {
     menu1Card.classList.remove('selected');
     menu2Card.classList.remove('selected');
     fileInputText.textContent = 'Seleccionar archivo...';
-    fileInputText.style.color = '#666';
+    fileInputText.style.color = '#6B7280'; // var(--muted)
     fileInputText.style.fontWeight = 'normal';
 }
