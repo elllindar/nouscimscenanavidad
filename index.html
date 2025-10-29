@@ -1,412 +1,98 @@
-<!DOCTYPE html><html data-lt-installed="true" lang="es"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>Formulario de Pedido - Nou Cims</title>
-	<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
-	<style type="text/css">* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fe5d52 0%, #ff8a82 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 40px;
-            max-width: 500px;
-            width: 100%;
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .logo-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo {
-            width: 80px;
-            height: 80px;
-            animation: bounce 1s ease-in-out;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        h1 {
-            color: #fe5d52;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 28px;
-            font-weight: 600;
-        }
-
-        .form {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        label {
-            color: #333;
-            font-weight: 600;
-            font-size: 14px;
-            letter-spacing: 0.3px;
-        }
-
-        input[type="text"],
-        select {
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
-            color: #333;
-            background-color: white;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        input[type="text"] {
-            cursor: text;
-        }
-
-        select {
-            cursor: pointer;
-        }
-
-        input[type="text"]:hover,
-        select:hover {
-            border-color: #fe5d52;
-        }
-
-        input[type="text"]:focus,
-        select:focus {
-            border-color: #fe5d52;
-            box-shadow: 0 0 0 3px rgba(254, 93, 82, 0.1);
-        }
-
-        input[type="text"]::placeholder {
-            color: #999;
-            font-style: italic;
-        }
-
-        .file-input-wrapper {
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-            width: 100%;
-        }
-
-        input[type="file"] {
-            position: absolute;
-            left: -9999px;
-        }
-
-        .file-input-text {
-            display: block;
-            padding: 12px 15px;
-            border: 2px dashed #e0e0e0;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            color: #666;
-        }
-
-        .file-input-wrapper:hover .file-input-text {
-            border-color: #fe5d52;
-            background-color: #fff5f4;
-        }
-
-        input[type="file"]:focus + .file-input-text {
-            border-color: #fe5d52;
-            box-shadow: 0 0 0 3px rgba(254, 93, 82, 0.1);
-        }
-
-        .help-text {
-            color: #666;
-            font-size: 12px;
-            font-style: italic;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #fe5d52 0%, #ff8a82 100%);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(254, 93, 82, 0.3);
-            margin-top: 10px;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(254, 93, 82, 0.4);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .container {
-                padding: 30px 20px;
-            }
-            
-            h1 {
-                font-size: 24px;
-            }
-            
-            .logo {
-                width: 60px;
-                height: 60px;
-            }
-        }
-
-        /* Página de agradecimiento */
-        .thank-you-page {
-            display: none;
-            text-align: center;
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .thank-you-page.show {
-            display: block;
-        }
-
-        .form-container.hide {
-            display: none;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .thank-you-title {
-            color: #fe5d52;
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(254, 93, 82, 0.2);
-        }
-
-        .thank-you-message {
-            color: #333;
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
-
-        .thank-you-logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .back-btn {
-            background: linear-gradient(135deg, #fe5d52 0%, #ff8a82 100%);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(254, 93, 82, 0.3);
-            margin-top: 30px;
-        }
-
-        .back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(254, 93, 82, 0.4);
-        }
-
-        @media (max-width: 600px) {
-            .thank-you-title {
-                font-size: 28px;
-            }
-            
-            .thank-you-message {
-                font-size: 16px;
-            }
-            
-            .thank-you-logo {
-                width: 90px;
-                height: 90px;
-            }
-        }
-	</style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pedido - Nou Cims</title>
+    <link href="favicon.svg" rel="icon" type="image/svg+xml">
+    <link href="styles.css" rel="stylesheet">
 </head>
-<body data-gramm="false" data-lt-tmp-id="lt-445264">
+<body>
 <div class="container">
 <!-- Página del formulario -->
 <div class="form-container" id="formContainer">
-<div class="logo-container"><img alt="Logo Restaurante" class="logo" src="favicon.svg"/></div>
+    <div class="logo-container">
+        <img alt="Logo Restaurante" class="logo" src="favicon.svg">
+    </div>
 
-<h1>Formulario Navidad</h1>
+    <h1>Formulario Navidad</h1>
 
-<form class="form" id="orderForm" action="">
-<div class="form-group"><label for="nombre">Nombre *</label> <input id="nombre" type="text" placeholder="Introduce tu nombre" required=""/></div>
+    <form class="form" id="orderForm" action="">
+        <div class="form-group">
+            <label for="nombre">Nombre *</label>
+            <input id="nombre" type="text" placeholder="Introduce tu nombre" required>
+        </div>
 
-<div class="form-group"><label for="apellido">Apellidos *</label> <input id="apellido" type="text" placeholder="Introduce tus apellidos" required=""/></div>
+        <div class="form-group">
+            <label for="apellido">Apellidos *</label>
+            <input id="apellido" type="text" placeholder="Introduce tus apellidos" required>
+        </div>
 
-<div class="form-group"><label for="primerPlato">Primer Plato *</label> <select id="primerPlato" name="primerPlato" required=""><option value="">Selecciona una opción</option><option value="ensalada">Ensalada mixta</option><option value="sopa">Sopa del día</option><option value="pasta">Pasta con tomate</option><option value="arroz">Arroz con verduras</option><option value="lentejas">Lentejas guisadas</option> </select></div>
+        <div class="menu-section">
+            <div class="menu-title">Selecciona tu Menú de Navidad *</div>
+            <div class="menu-options">
+                <label class="menu-card" id="menu1Card">
+                    <input type="radio" name="menu" value="menu1" id="menu1" required>
+                    <div class="menu-card-title">🎄 Menú 1</div>
+                    <div class="menu-card-content">
+                        <strong>Entrantes:</strong>
+                        <p>• Sopa de galets</p>
+                        <p>• Canelones de la abuela</p>
+                        <strong>Principal:</strong>
+                        <p>• Pavo asado con guarnición</p>
+                        <strong>Postre:</strong>
+                        <p>• Turrón y polvorones</p>
+                    </div>
+                </label>
 
-<div class="form-group"><label for="segundoPlato">Segundo Plato *</label> <select id="segundoPlato" name="segundoPlato" required=""><option value="">Selecciona una opción</option><option value="pollo">Pollo asado</option><option value="pescado">Pescado al horno</option><option value="ternera">Ternera a la plancha</option><option value="merluza">Merluza en salsa</option><option value="hamburguesa">Hamburguesa casera</option> </select></div>
+                <label class="menu-card" id="menu2Card">
+                    <input type="radio" name="menu" value="menu2" id="menu2" required>
+                    <div class="menu-card-title">✨ Menú 2</div>
+                    <div class="menu-card-content">
+                        <strong>Entrantes:</strong>
+                        <p>• Crema de marisco</p>
+                        <p>• Ensalada de langostinos</p>
+                        <strong>Principal:</strong>
+                        <p>• Cordero al horno con patatas</p>
+                        <strong>Postre:</strong>
+                        <p>• Roscón de Reyes</p>
+                    </div>
+                </label>
+            </div>
+        </div>
 
-<div class="form-group"><label for="dni">Subir DNI *</label>
+        <div class="form-group">
+            <label for="alergias">Alergias e Intolerancias</label>
+            <textarea id="alergias" name="alergias" placeholder="Indica aquí si tienes alguna alergia o intolerancia alimentaria (gluten, lactosa, frutos secos, marisco, etc.)"></textarea>
+            <small class="help-text">Este campo es opcional pero importante para tu seguridad</small>
+        </div>
 
-<div class="file-input-wrapper"><input accept="image/*,.pdf" id="dni" type="file" required=""/> <span class="file-input-text">Seleccionar archivo...</span></div>
-<small class="help-text">Formatos aceptados: JPG, PNG, PDF (máx. 5MB)</small></div>
-<button class="submit-btn" type="submit">Enviar Formulario</button></form>
+        <div class="form-group">
+            <label for="dni">Subir DNI *</label>
+            <div class="file-input-wrapper">
+                <input accept="image/*,.pdf" id="dni" type="file" required>
+                <span class="file-input-text">Seleccionar archivo...</span>
+            </div>
+            <small class="help-text">Formatos aceptados: JPG, PNG, PDF (máx. 5MB)</small>
+        </div>
+
+        <button class="submit-btn" type="submit">Enviar Formulario</button>
+    </form>
 </div>
 
 <!-- Página de agradecimiento -->
 <div class="thank-you-page" id="thankYouPage">
-    <h1 class="thank-you-title">¡Muchas Gracias!</h1>
+    <h1 class="thank-you-title" id="thankYouTitle">¡Muchas Gracias!</h1>
     <p class="thank-you-message">
         Tu formulario ha sido enviado correctamente.<br>
         Nos pondremos en contacto contigo pronto.
     </p>
     <div class="logo-container">
-        <img alt="Logo Nou Cims" class="thank-you-logo" src="favicon.svg"/>
+        <img alt="Logo Nou Cims" class="thank-you-logo" src="favicon.svg">
     </div>
-    <button class="back-btn" onclick="showForm()">Enviar otro formulario</button>
 </div>
 </div>
-<script>
-        // Manejo del input de archivo
-        const fileInput = document.getElementById('dni');
-        const fileInputText = document.querySelector('.file-input-text');
 
-        fileInput.addEventListener('change', function(e) {
-            const fileName = e.target.files[0]?.name;
-            if (fileName) {
-                fileInputText.textContent = fileName;
-                fileInputText.style.color = '#fe5d52';
-                fileInputText.style.fontWeight = '600';
-            } else {
-                fileInputText.textContent = 'Seleccionar archivo...';
-                fileInputText.style.color = '#666';
-                fileInputText.style.fontWeight = 'normal';
-            }
-        });
-
-        // Hacer clic en el texto para abrir el selector de archivos
-        fileInputText.addEventListener('click', function() {
-            fileInput.click();
-        });
-
-        // Validación del formulario
-        const form = document.getElementById('orderForm');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const nombre = document.getElementById('nombre').value.trim();
-            const apellido = document.getElementById('apellido').value.trim();
-            const primerPlato = document.getElementById('primerPlato').value;
-            const segundoPlato = document.getElementById('segundoPlato').value;
-            const dniFile = fileInput.files[0];
-            
-            // Validar tamaño del archivo (5MB)
-            if (dniFile && dniFile.size > 5 * 1024 * 1024) {
-                alert('El archivo es demasiado grande. El tamaño máximo es 5MB.');
-                return;
-            }
-            
-            // Si todo es válido
-            if (nombre && apellido && primerPlato && segundoPlato && dniFile) {
-                // Mostrar página de agradecimiento
-                showThankYou();
-                
-                // Aquí puedes agregar la lógica para enviar los datos al servidor
-                // Por ejemplo, usando FormData y fetch()
-            }
-        });
-
-        // Función para mostrar la página de agradecimiento
-        function showThankYou() {
-            const formContainer = document.getElementById('formContainer');
-            const thankYouPage = document.getElementById('thankYouPage');
-            
-            formContainer.classList.add('hide');
-            thankYouPage.classList.add('show');
-        }
-
-        // Función para volver al formulario
-        function showForm() {
-            const formContainer = document.getElementById('formContainer');
-            const thankYouPage = document.getElementById('thankYouPage');
-            
-            thankYouPage.classList.remove('show');
-            formContainer.classList.remove('hide');
-            
-            // Resetear el formulario
-            form.reset();
-            fileInputText.textContent = 'Seleccionar archivo...';
-            fileInputText.style.color = '#666';
-            fileInputText.style.fontWeight = 'normal';
-        }
-    </script>
-
-</body></html>
+<script src="script.js"></script>
+</body>
+</html>
